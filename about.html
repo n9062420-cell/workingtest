@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <p class="badge">Secure Login</p>
+            <h1>LOGIN PAGE</h1>
+            <h2>Access your account securely</h2>
+            <p class="description">
+                Enter your details below to continue to the next step.
+            </p>
+        </section>
+
+        <section class="card login-card">
+            <h3>Sign In</h3>
+            <form onsubmit="return false;">
+                <input type="email" id="email" class="input-field" placeholder="EMAIL">
+                <input type="password" id="password" class="input-field" placeholder="PASSWORD">
+                <button type="button" onclick="login()">LOGIN</button>
+            </form>
+            <p id="result" class="result-text"></p>
+        </section>
+
+        <div class="actions">
+            <a class="back-link" href="index.html">← Back to Dashboard</a>
+            <button type="button" onclick="window.location.href='page1.html'">next page</button>
+        </div>
+    </main>
+
+    <script src="script1.js"></script>
+</body>
+</html>
