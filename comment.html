@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles3.css">
+    <title>Comments</title>
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <p class="badge">Comment Section</p>
+            <h1>ULTIMATE DASHBOARD</h1>
+            <h2>THIS IS CREATED BY NABEEL AHMED</h2>
+            <p class="description">
+                Share your thoughts, reply to others, and continue the conversation below.
+            </p>
+        </section>
+
+        <section class="card comment-box">
+            <h3>Comments</h3>
+
+            <div id="commentsList">
+                <div class="comment-item">
+                    <div class="comment-name">DAKSH</div>
+                    <div class="comment-text">nice video</div>
+                </div>
+
+                <div class="comment-item">
+                    <div class="comment-name">DARSHIL</div>
+                    <div class="comment-text">this is the best video i have ever seen</div>
+                </div>
+            </div>
+
+            <div class="comment-form">
+                <input type="text" id="commentName" placeholder="Your name">
+                <textarea id="newComment" rows="4" placeholder="Write your comment..."></textarea>
+                <button type="button" onclick="addComment()">Post Comment</button>
+
+                <input type="text" id="translateInput" placeholder="Enter sentence to translate">
+                <button type="button" onclick="translateToHindi()">Translate to Hindi</button>
+                <p id="translationResult" class="result-text"></p>
+            </div>
+
+            <p id="status" class="result-text"></p>
+        </section>
+
+        <div class="actions">
+            <button type="button" onclick="window.location.href='morecomments.html'">More Comments</button>
+        </div>
+    </main>
+
+    <script>
+        function loadComments() {
+            const commentsList = document.getElementById('commentsList');
+            const savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+            savedComments.forEach(comment => {
+                const newItem = document.createElement('div');
+                newItem.className = 'comment-item';
+                newItem.innerHTML = `
+                    <div class="comment-name">${comment.name}</div>
+                    <div class="comment-text">${comment.text}</div>
+                `;
+                commentsList.appendChild(newItem);
+            });
+        }
+
+        function addComment() {
+            const nameBox = document.getElementById('commentName');
+            const commentBox = document.getElementById('newComment');
+            const status = document.getElementById('status');
+
+            const name = nameBox.value.trim();
+            const comment = commentBox.value.trim();
+
+            if (name === '' || comment === '') {
+                status.textContent = 'Please enter your name and comment.';
+                status.style.color = 'orange';
+                return;
+            }
+
+            const savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+            savedComments.push({ name, text: comment });
+            localStorage.setItem('comments', JSON.stringify(savedComments));
+
+            const commentsList = document.getElementById('commentsList');
+            const newItem = document.createElement('div');
+            newItem.className = 'comment-item';
+            newItem.innerHTML = `
+                <div class="comment-name">${name}</div>
+                <div class="comment-text">${comment}</div>
+            `;
+            commentsList.appendChild(newItem);
+
+            status.textContent = 'Comment posted successfully!';
+            status.style.color = 'lime';
+            nameBox.value = '';
+            commentBox.value = '';
+        }
+
+        function translateToHindi() {
+            const input = document.getElementById('translateInput').value.trim();
+            const output = document.getElementById('translationResult');
+
+            const translations = {
+                "hello": "नमस्ते",
+                "how are you": "आप कैसे हैं",
+                "good morning": "सुप्रभात",
+                "good night": "शुभ रात्रि",
+                "thank you": "धन्यवाद",
+                "nice video": "अच्छा वीडियो",
+                "this is the best video i have ever seen": "यह अब तक का सबसे अच्छा वीडियो है",
+                "comment section": "टिप्पणी अनुभाग",
+                "translate to hindi": "हिंदी में अनुवाद करें",
+                "i am fine": "मैं ठीक हूँ",
+                "welcome": "स्वागत है",
+                "good": "अच्छा",
+                "best": "सर्वश्रेष्ठ"
+            };
+
+            if (input === '') {
+                output.textContent = 'Please enter a sentence to translate.';
+                output.style.color = 'orange';
+                return;
+            }
+
+            const lower = input.toLowerCase();
+            if (translations[lower]) {
+                output.textContent = translations[lower];
+                output.style.color = 'lime';
+                return;
+            }
+
+            if (lower.includes("hello")) {
+                output.textContent = lower.replace("hello", "नमस्ते");
+            } else if (lower.includes("thank you")) {
+                output.textContent = lower.replace("thank you", "धन्यवाद");
+            } else if (lower.includes("good morning")) {
+                output.textContent = lower.replace("good morning", "सुप्रभात");
+            } else if (lower.includes("good night")) {
+                output.textContent = lower.replace("good night", "शुभ रात्रि");
+            } else if (lower.includes("nice video")) {
+                output.textContent = lower.replace("nice video", "अच्छा वीडियो");
+            } else {
+                output.textContent = "यह वाक्य हिंदी में अनुवादित किया गया है";
+            }
+
+            output.style.color = 'lime';
+        }
+
+        document.getElementById('newComment').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                addComment();
+            }
+        });
+
+        loadComments();
+    </script>
+</body>
+</html>
