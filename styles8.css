@@ -1,0 +1,142 @@
+/* ===== Google Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Orbitron',sans-serif;
+    background:#050816;
+    overflow:hidden;
+    color:white;
+}
+
+/* Animated Background */
+#background{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(0,255,255,.2),transparent 40%),
+        radial-gradient(circle at 80% 70%,rgba(0,255,120,.2),transparent 40%),
+        linear-gradient(#040816,#0d1326);
+    animation:bgMove 10s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes bgMove{
+    from{
+        filter:hue-rotate(0deg);
+        transform:scale(1);
+    }
+    to{
+        filter:hue-rotate(20deg);
+        transform:scale(1.05);
+    }
+}
+
+/* Main Container */
+.container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+}
+
+/* Title */
+header h1{
+    font-size:48px;
+    color:#00ffff;
+    text-shadow:
+        0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan;
+}
+
+/* Score Panel */
+.scoreBox{
+    display:flex;
+    gap:25px;
+    margin-top:20px;
+}
+
+.score,
+.highScore{
+    padding:15px 30px;
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:0 0 20px rgba(0,255,255,.2);
+    text-align:center;
+}
+
+.score span,
+.highScore span{
+    display:block;
+    font-size:30px;
+    color:#00ff99;
+    margin-top:8px;
+}
+
+/* Canvas */
+canvas{
+    margin-top:20px;
+    border-radius:20px;
+    border:3px solid cyan;
+    background:#0b1120;
+    box-shadow:
+        0 0 20px cyan,
+        0 0 60px rgba(0,255,255,.4);
+}
+
+/* Buttons */
+footer{
+    display:flex;
+    gap:15px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(45deg,#00c6ff,#0072ff);
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px cyan;
+}
+
+/* Game Over Screen */
+#gameOverScreen{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:rgba(0,0,0,.85);
+}
+
+#gameOverScreen h1{
+    font-size:70px;
+    color:red;
+    text-shadow:0 0 20px red;
+}
+
+#finalScore{
+    font-size:50px;
+    color:gold;
+    margin:20px;
+}
