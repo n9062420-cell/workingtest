@@ -1,0 +1,198 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg1: #0f172a;
+    --bg2: #1e293b;
+    --card: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.15);
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+    --accent: #38bdf8;
+    --accent2: #a855f7;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 30%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--muted);
+    margin-bottom: 18px;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.badge:hover {
+    transform: translateY(-3px) scale(1.03);
+    border-color: rgba(56, 189, 248, 0.55);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+h1 {
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #38bdf8, #a855f7, #fb7185);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h2 {
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.description {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(14px);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.comment-box {
+    max-width: 760px;
+    margin: 30px auto 0;
+}
+
+.comment-box h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.comment-item {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    margin-bottom: 14px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.comment-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.comment-name {
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.comment-text {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+textarea,
+input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    outline: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea::placeholder,
+input[type="text"]::placeholder {
+    color: var(--muted);
+}
+
+textarea:hover,
+input[type="text"]:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.45);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+textarea:focus,
+input[type="text"]:focus {
+    border-color: rgba(56, 189, 248, 0.85);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    cursor: pointer;
+    box-shadow: 0 12px 24px rgba(56, 189, 248, 0.25);
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+    opacity: 0.95;
+    box-shadow: 0 16px 30px rgba(56, 189, 248, 0.35);
+}
+
+.result-text {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
